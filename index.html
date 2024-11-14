@@ -98,6 +98,32 @@
             line-height: 1.8;
         }
 
+        /* Notícias */
+        .news-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .news-article {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 5px solid #4a90e2;
+            border-radius: 10px;
+        }
+
+        .news-article h3 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            color: #f5a623;
+        }
+
+        .news-article p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+
         /* Contato */
         .contact-section {
             display: none;
@@ -183,6 +209,7 @@
     <div class="navbar">
         <div class="nav-buttons">
             <button onclick="showSection('home')">Início</button>
+            <button onclick="showSection('news')">Notícias</button>
             <button onclick="showSection('contact')">Contato</button>
         </div>
     </div>
@@ -201,48 +228,36 @@
             e entre em contato conosco pelo WhatsApp, Discord e E-mail!
         </p>
 
+        <!-- Notícias -->
+        <div id="news" class="news-section">
+            <h2>Últimas Notícias</h2>
+            <div class="news-article">
+                <h3>Nova versão do site!</h3>
+                <p>Nesta nova versão foi iplementada a aba de Notícias!</p>
+            </div>
+            <div class="news-article">
+                <h3>Nova versão do site!</h3>
+                <p>nesta nova versão foi adicionada a aba de contato tanto para WhatsApp quanto Discord e E-mail!</p>
+            </div>
+        </div>
+
         <!-- Contato -->
         <div id="contact" class="contact-section">
             <h2>Entre em Contato</h2>
             <div class="contact-links">
-                <a href="https://discord.gg/4kjqUMDm" target="_blank">Discord</a>
-                <a href="https://w.app/1Ao7dx" target="_blank">WhatsApp</a>
+                <a href="https://discord.gg/4mfyTAnT" target="_blank">Discord</a>
+                <a href="mailto:admin@rlsscommunity.com">E-mail</a>
+                <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
             </div>
-
-            <h3>Envie-nos uma mensagem</h3>
-            <form class="contact-form" onsubmit="sendEmail(event)">
-                <input type="text" id="name" placeholder="Seu nome" required>
-                <input type="email" id="email" placeholder="Seu e-mail" required>
-                <textarea id="message" placeholder="Sua mensagem" rows="5" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
         </div>
     </div>
 
     <script>
-        function showSection(sectionId) {
-            const home = document.getElementById('home');
-            const contact = document.getElementById('contact');
-            
-            if (sectionId === 'contact') {
-                home.style.display = 'none';
-                contact.style.display = 'block';
-            } else {
-                home.style.display = 'flex';
-                contact.style.display = 'none';
-            }
+        function showSection(section) {
+            const sections = document.querySelectorAll('.container > div');
+            sections.forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
         }
-
-        function sendEmail(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            window.location.href = `mailto:contato@rlss.com?subject=Mensagem de ${name}&body=Email: ${email}%0A%0A${message}`;
-        }
-
-        // Exibe a seção inicial
         showSection('home');
     </script>
 </body>
